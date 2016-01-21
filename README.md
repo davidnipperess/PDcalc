@@ -1,2 +1,2 @@
 # PDcalc
-R package for PD calculus
+R package for the PD calculus

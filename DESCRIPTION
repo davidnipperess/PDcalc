@@ -1,0 +1,15 @@
+Package: PDcalc
+Title: R package for the PD calculus
+Version: 0.0.1.9000
+Authors@R: c(person("David", "Nipperess", email = "david.nipperess@mq.edu.au", role = c("aut", "cre")),
+          person("Peter", "Wilson", email = "peter.wilson@mq.edu.au", role = "aut"))
+Description: PDcalc is a package for calculating various diversity
+    measures based on Phylogenetic Diversity. This measurement
+    framework is referred to by Dan Faith as the "PD calculus".
+Depends:
+    R (>= 3.2.3)
+Imports:
+    ape
+License: GPL-3
+LazyData: true
+RoxygenNote: 5.0.1

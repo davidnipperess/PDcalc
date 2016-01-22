@@ -1,4 +1,5 @@
 # PDcalc
+### An implementation of the Phylogenetic Diversity (PD) calculus in R
 **PDcalc** is a R package for calculating Phylogenetic Diversity (PD). Although various PD-related functions are available in other packages, *PDcalc* is intended to be a single repository for all known extensions of the classical PD measure, in what can be broadly referred to as the "PD calculus" (Faith, 2013).
 
 The package includes functions for the calculation of:

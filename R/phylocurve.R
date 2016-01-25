@@ -1,43 +1,49 @@
 #' Generate a rarefaction curve of Phylogenetic Diversity
 #' 
-#' Calculates a rarefaction curve giving expected phylogenetic diversity (mean
-#' and variance) for multiple values of sampling effort. Sampling effort can be
-#' defined in terms of the number of individuals, sites or species. Expected
-#' phylogenetic diversity is calculated using an exact analytical formulation
+#' Calculates a rarefaction curve giving expected phylogenetic diversity (mean 
+#' and variance) for multiple values of sampling effort. Sampling effort can be 
+#' defined in terms of the number of individuals, sites or species. Expected 
+#' phylogenetic diversity is calculated using an exact analytical formulation 
 #' (Nipperess & Matsen 2013) that is both more accurate and more computationally
 #' efficient than randomisation methods.
-#' @param x is a community \code{data.frame} (as in the \code{vegan} package)
-#'   with species/OTUs as columns and samples/sites as rows. Columns are
-#'   labelled with the names of the species/OTUs. Rows are labelled with the
-#'   names of the samples/sites. Data can be either abundance or incidence
-#'   (0/1). Column labels must match tip labels in the phylogenetic tree
-#'   exactly!
+#' @param x is the community data given as a \code{data.frame} or \code{matrix}
+#'   with species/OTUs as columns and samples/sites as rows (like in the
+#'   \code{vegan} package). Columns are labelled with the names of the
+#'   species/OTUs. Rows are labelled with the names of the samples/sites. Data
+#'   can be either abundance or incidence (0/1). Column labels must match tip
+#'   labels in the phylogenetic tree exactly!
 #' @param phy is a rooted phylogenetic tree with branch lengths stored as a 
-#'   phylo object (as in the \code{ape} package) with terminal nodes labelled
-#'   with names matching those of the community data table. Note that the
-#'   function trims away any terminal taxa not present in the community data
+#'   phylo object (as in the \code{ape} package) with terminal nodes labelled 
+#'   with names matching those of the community data table. Note that the 
+#'   function trims away any terminal taxa not present in the community data 
 #'   table, so it is not necessary to do this beforehand.
-#' @param stepm is the size of the interval in a sequence of numbers of
+#' @param stepm is the size of the interval in a sequence of numbers of 
 #'   individuals, sites or species to which \code{x} is to be rarefied.
-#' @param subsampling indicates whether the subsampling will be by
-#'   \code{'individual'} (default), \code{'site'} or \code{'species'}. When
-#'   there are multiple sites, rarefaction by individuals or species is done by
+#' @param subsampling indicates whether the subsampling will be by 
+#'   \code{'individual'} (default), \code{'site'} or \code{'species'}. When 
+#'   there are multiple sites, rarefaction by individuals or species is done by 
 #'   first pooling the sites.
-#' @param replace is a boolean indicating whether subsampling should be done
-#'   with or without replacement.
-#'
-#' @return a matrix object of three columns giving the expected PD values (mean
-#'   and variance) for each value of \code{m}
+#' @param replace is a logical indicating whether subsampling should be done 
+#'   with (\code{TRUE}) or without (\code{FALSE} - default) replacement.
+#' @details \code{phylocurve} takes community data and a rooted phylogenetic 
+#'   tree (with branch lengths) and calculates expected mean and variance of 
+#'   Phylogenetic Diversity (PD) for every specified value of \code{m}
+#'   individuals, sites or species. \code{m} will range from 1 to the total
+#'   number of individuals/sites/species in increments given by \code{stepm}.
+#'   Calculations are done using the exact analytical formulae (Nipperess &
+#'   Matsen, 2013) generalised from the classic equation of Hurlbert (1971).
+#'   When there are multiple sites in the community data and rarefaction is by
+#'   individuals or species, sites are first pooled.
+#' @return a \code{matrix} object of three columns giving the expected PD values
+#'   (mean and variance) for each value of \code{m}
 #' @importFrom ape drop.tip
-#' @references 
-#' \itemize{
-#' \item{Hurlbert (1971) The nonconcept of Species Diversity: a critique and
-#' alternative parameters. \emph{Ecology} 52: 577-586.}
-#' \item{Nipperess & Matsen (2013) The mean and variance of phylogenetic 
-#' diversity under rarefaction. \emph{Methods in Ecology & Evolution} 4:
-#' 566-572.}}
+#' @references \itemize{ \item{Hurlbert (1971) The nonconcept of Species 
+#'   Diversity: a critique and alternative parameters. \emph{Ecology} 52: 
+#'   577-586.} \item{Nipperess & Matsen (2013) The mean and variance of 
+#'   phylogenetic diversity under rarefaction. \emph{Methods in Ecology & 
+#'   Evolution} 4: 566-572.}}
 #' @export
-#'
+#' 
 #' @examples
 phylocurve <- function (x, phy, stepm=1, subsampling = "individual", 
                         replace = FALSE) {
@@ -66,20 +72,7 @@ phylocurve <- function (x, phy, stepm=1, subsampling = "individual",
   # a clade spanned by a branch is indicated by a 0 (no) or 1 (yes). Unlike
   # supertree MRP matrices, our matrix includes terminal branches.
   
-  # original code for generating MRP matrix
-  # phylomatrix <- matrix (0, length(phy$tip.label), length(phy$edge.length))
-  # for (i in 1:length(phy$tip.label)) {
-  # lineage <- which (phy$edge[,2] == i)
-  # node <- phy$edge[lineage,1]
-  # while (node > length(phy$tip.label)+1) {
-  # branch <- which (phy$edge[,2] == node)
-  # lineage <- c (lineage, branch)
-  # node <- phy$edge[branch,1]
-  # }
-  # phylomatrix[i,lineage] = 1
-  # }
-  
-  # replaced with Peter Wilson's much faster function
+  # using Peter Wilson's fast function
   phylomatrix <- FastXtreePhylo(phy)
   phylomatrix <- phylomatrix$H1
   

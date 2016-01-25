@@ -1,24 +1,38 @@
 #' Phylogenetic Diversity of ecological samples
-#'
-#' Calculates the Phylogenetic Diversity (PD) of multiple samples
-#' simultaneously. Note that this function uses that version of PD that always
+#' 
+#' Calculates the Phylogenetic Diversity (PD) of multiple samples 
+#' simultaneously. Note that this function uses that version of PD that always 
 #' includes the path to the root of the tree.
-#' @param x is a community \code{data.frame} (as in the \code{vegan} package)
-#'   with species/OTUs as columns and samples/sites as rows. Columns are
-#'   labelled with the names of the species/OTUs. Rows are labelled with the
-#'   names of the samples/sites. Data can be either abundance or incidence
-#'   (0/1). Column labels must match tip labels in the phylogenetic tree
-#'   exactly!
+#' @param x is the community data given as a \code{data.frame} or \code{matrix} 
+#'   with species/OTUs as columns and samples/sites as rows (like in the 
+#'   \code{vegan} package). Columns are labelled with the names of the 
+#'   species/OTUs. Rows are labelled with the names of the samples/sites. Data 
+#'   can be either abundance or incidence (0/1). Column labels must match tip 
+#'   labels in the phylogenetic tree exactly!
 #' @param phy is a rooted phylogenetic tree with branch lengths stored as a 
-#'   phylo object (as in the \code{ape} package) with terminal nodes labelled
-#'   with names matching those of the community data table. Note that the
-#'   function trims away any terminal taxa not present in the community data
+#'   phylo object (as in the \code{ape} package) with terminal nodes labelled 
+#'   with names matching those of the community data table. Note that the 
+#'   function trims away any terminal taxa not present in the community data 
 #'   table, so it is not necessary to do this beforehand.
-#' @return A vector of Phylogenetic Diversity (PD) values for each sample/site
+#' @details \code{phylodiv} takes community data and a phylogenetic tree (rooted
+#'   and with branch lengths) and calculates the Phylogenetic Diversity (PD) of 
+#'   all samples/sites. PD is defined as the total length of all branches 
+#'   spanning a set of terminal taxa representing an ecological sample (Faith, 
+#'   1992). Please note that, if the common ancestor (node) of the set of taxa 
+#'   of a sample is not the root of the tree, then the set of branches 
+#'   connecting this node to the root are also included in the calculation. 
+#'   Calculations are achieved using the efficient matrix algebra solution of 
+#'   Rodrigues & Gaston (2002).
+#' @return A vector of Phylogenetic Diversity (PD) values for each sample/site 
 #'   in \code{x}.
 #' @importFrom ape drop.tip
+#' @references \itemize{\item{Faith DP. 1992. Conservation evaluation and 
+#'   phylogenetic diversity. \emph{Biological Conservation} 61: 1-10.} 
+#'   \item{Rodrigues A & Gaston KJ. 2002. Maximising phylogenetic diversity in 
+#'   the selection of networks of conservation areas. \emph{Biological
+#'   Conservation} 105: 103-111.}}
 #' @export
-#'
+#' 
 #' @examples
 phylodiv <- function (x, phy) {
   

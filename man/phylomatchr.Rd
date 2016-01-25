@@ -7,12 +7,12 @@
 phylomatchr(x, phy)
 }
 \arguments{
-\item{x}{is a community \code{data.frame} (as in the \code{vegan} package)
-with species/OTUs as columns and samples/sites as rows. Columns are
-labelled with the names of the species/OTUs. Rows are labelled with the
-names of the samples/sites. Data can be either abundance or incidence
-(0/1). Column labels must match tip labels in the phylogenetic tree
-exactly!}
+\item{x}{is the community data given as a \code{data.frame} or \code{matrix} 
+with species/OTUs as columns and samples/sites as rows (like in the 
+\code{vegan} package). Columns are labelled with the names of the 
+species/OTUs. Rows are labelled with the names of the samples/sites. Data 
+can be either abundance or incidence (0/1). Column labels must match tip 
+labels in the phylogenetic tree exactly!}
 
 \item{phy}{is a rooted phylogenetic tree with branch lengths stored as a 
 phylo object (as in the \code{ape} package) with terminal nodes labelled

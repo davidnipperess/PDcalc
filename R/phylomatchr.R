@@ -1,4 +1,4 @@
-#' Matches taxa in a set fo sites with the tips of a phylogenetic tree
+#' Matches taxa in a set of sites with the tips of a phylogenetic tree
 #'
 #' @param x is the community data given as a \code{data.frame} or \code{matrix} 
 #'   with species/OTUs as columns and samples/sites as rows (like in the 

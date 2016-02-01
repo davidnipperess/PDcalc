@@ -6,6 +6,7 @@ The package includes functions for the calculation of:
 
   * Classical PD
   * PD rarefaction curves
+  * PD resemblance measures
   * more coming soon ...
   
 ### Installation

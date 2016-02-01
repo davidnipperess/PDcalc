@@ -2,7 +2,7 @@
 % Please edit documentation in R/phylomatchr.R
 \name{phylomatchr}
 \alias{phylomatchr}
-\title{Matches taxa in a set fo sites with the tips of a phylogenetic tree}
+\title{Matches taxa in a set of sites with the tips of a phylogenetic tree}
 \usage{
 phylomatchr(x, phy)
 }
@@ -26,6 +26,6 @@ A list of two vectors. The first vector is the taxa found in the tree
   not in the tree.
 }
 \description{
-Matches taxa in a set fo sites with the tips of a phylogenetic tree
+Matches taxa in a set of sites with the tips of a phylogenetic tree
 }
 

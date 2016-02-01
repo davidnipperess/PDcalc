@@ -50,7 +50,7 @@ phylodiv <- function (x, phy) {
   
   if(length(taxon_check[[1]])>0) {
     warning(length(taxon_check[[1]]), " taxa were not in x, and were trimmed",
-            "from the tree prior to calculation of PD.")
+            " from the tree prior to calculation of PD.")
     phy <- drop.tip (phy, taxon_check[[1]])
   }
   

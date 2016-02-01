@@ -28,7 +28,7 @@ individuals, sites or species to which \code{x} is to be rarefied.}
 there are multiple sites, rarefaction by individuals or species is done by 
 first pooling the sites.}
 
-\item{replace}{is a logical indicating whether subsampling should be done 
+\item{replace}{is a \code{logical} indicating whether subsampling should be done 
 with (\code{TRUE}) or without (\code{FALSE} - default) replacement.}
 }
 \value{

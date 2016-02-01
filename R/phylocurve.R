@@ -23,7 +23,7 @@
 #'   \code{'individual'} (default), \code{'site'} or \code{'species'}. When 
 #'   there are multiple sites, rarefaction by individuals or species is done by 
 #'   first pooling the sites.
-#' @param replace is a logical indicating whether subsampling should be done 
+#' @param replace is a \code{logical} indicating whether subsampling should be done 
 #'   with (\code{TRUE}) or without (\code{FALSE} - default) replacement.
 #' @details \code{phylocurve} takes community data and a rooted phylogenetic 
 #'   tree (with branch lengths) and calculates expected mean and variance of 
@@ -62,7 +62,7 @@ phylocurve <- function (x, phy, stepm=1, subsampling = "individual",
   
   if(length(taxon_check[[1]])>0) {
     warning(length(taxon_check[[1]]), " taxa were not in x, and were trimmed",
-            "from the tree prior to calculation of PD.")
+            " from the tree prior to calculation of PD.")
     phy <- drop.tip (phy, taxon_check[[1]])
   }
   

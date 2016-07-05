@@ -29,12 +29,12 @@
 #' @return A \code{vector} object giving the phylogenetic endemism of all 
 #'   sample/sites in \code{x}.
 #' @importFrom ape drop.tip
-#' @references \itemize { \item{Faith, Reid & Hunter. 2004. Integrating 
+#' @references \itemize{ \item{Faith, Reid & Hunter. 2004. Integrating 
 #'   phylogenetic diversity, complementarity, and endemism for conservation 
 #'   assessment. \emph{Conservation Biology} 18(1): 255-261.} \item{Rosauer, 
 #'   Laffan, Crisp, Donnellan & Cook. 2009. Phylogenetic endemism: a new
 #'   approach for identifying geographical concentrations of evolutionary 
-#'   history. \emph{Molecular Ecology} 18(19): 4061-4072.}
+#'   history. \emph{Molecular Ecology} 18(19): 4061-4072.}}
 #' @export
 #' 
 #' @examples

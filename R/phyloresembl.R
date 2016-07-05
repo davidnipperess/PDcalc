@@ -16,30 +16,38 @@
 #'   with names matching those of the community data table. Note that the 
 #'   function trims away any terminal taxa not present in the community data 
 #'   table, so it is not necessary to do this beforehand.
-#' @param incidence is a \code{logical} indicating whether the data are to be treated 
-#'   as incidence (binary presence-absence) or abundance.
+#' @param incidence is a \code{logical} indicating whether the data are to be 
+#'   treated as incidence (binary presence-absence) or abundance.
 #' @param method indicates the particular form of the resemblance index you wish
 #'   to use. Current options are: \code{'sorensen'} (default - 2a/a+b+c), 
 #'   \code{'jaccard'} (a/a+b+c), \code{'simpson'} (a/a+min(b,c)) and 
 #'   \code{'faith'} (a+0.5d/a+b+c+d).
-#' @param dissim is a \code{logical} indicating whether the pairwise resemblance values
-#'   should be similarity or dissimilarity (default)
+#' @param dissim is a \code{logical} indicating whether the pairwise resemblance
+#'   values should be similarity or dissimilarity (default)
 #' @details Takes a community data table and a rooted phylogenetic tree (with 
 #'   branch lengths) and calculates the resemblance in Phylogenetic Diversity 
 #'   (PD-resemblance) of all pairwise combinations of samples/sites. The 
 #'   principles for calculating PD-resemblance on incidence data are discussed 
 #'   by Ferrier et al. (2007). This approach has been extended to include 
-#'   abundance data (Nipperess et al. 2010).
+#'   abundance data (Nipperess et al. 2010). When using incidence data, the 
+#'   'sorensen' option is equivalent to the 'PhyloSor' measure of Bryant et al. 
+#'   (2008), while the 'jaccard' option is equivalent to the 'UniFrac' measure 
+#'   of Lozupone & Knight (2005).
 #' @return A \code{distance} object giving the PD-resemblance of all pairwise 
 #'   combinations of sample/sites in \code{x}.
 #' @importFrom ape drop.tip
-#' @references \itemize{ \item{Ferrier, Manion, Elith & Richardson. 2007. Using
-#'   generalized dissimilarity modelling to analyse and predict patterns of beta
-#'   diversity in regional biodiversity assessment. \emph{Diversity & 
-#'   Distributions} 13: 252-264.}
-#'   \item{Nipperess, Faith & Barton. 2010. 
-#'   Resemblance in Phylogenetic Diversity among ecological assemblages.
-#'   \emph{Journal of Vegetation Science} 21: 809-820.}}
+#' @references \itemize{ \item{Bryant, Lamanna, Morlon, Kerkhoff, Enquist & 
+#'   Green. 2008. Microbes on mountainsides: Contrasting elevational patterns of
+#'   bacterial and plant diversity. \emph{Proceedings of the National Academy of
+#'   Sciences} 105: 11505–11511.} \item{Ferrier, Manion, Elith & Richardson. 
+#'   2007. Using generalized dissimilarity modelling to analyse and predict 
+#'   patterns of beta diversity in regional biodiversity assessment. 
+#'   \emph{Diversity & Distributions} 13: 252-264.} \item{Lozupone & Knight. 
+#'   2005. UniFrac: a new phylogenetic method for comparing microbial 
+#'   communities. \emph{Applied and Environmental Microbiology} 71: 8228–8235.}
+#'   \item{Nipperess, Faith & Barton. 2010. Resemblance in Phylogenetic
+#'   Diversity among ecological assemblages. \emph{Journal of Vegetation
+#'   Science} 21: 809-820.}}
 #' @export
 #' 
 #' @examples

@@ -33,7 +33,7 @@
 #' @return A \code{distance} object giving the PD-resemblance of all pairwise 
 #'   combinations of sample/sites in \code{x}.
 #' @importFrom ape drop.tip
-#' @references \itemize { \item{Ferrier, Manion, Elith & Richardson. 2007. Using
+#' @references \itemize{ \item{Ferrier, Manion, Elith & Richardson. 2007. Using
 #'   generalized dissimilarity modelling to analyse and predict patterns of beta
 #'   diversity in regional biodiversity assessment. \emph{Diversity & 
 #'   Distributions} 13: 252-264.}

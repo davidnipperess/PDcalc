@@ -51,7 +51,7 @@ Takes a community data table and a rooted phylogenetic tree (with
   abundance data (Nipperess et al. 2010).
 }
 \references{
-\itemize { \item{Ferrier, Manion, Elith & Richardson. 2007. Using
+\itemize{ \item{Ferrier, Manion, Elith & Richardson. 2007. Using
   generalized dissimilarity modelling to analyse and predict patterns of beta
   diversity in regional biodiversity assessment. \emph{Diversity & 
   Distributions} 13: 252-264.}

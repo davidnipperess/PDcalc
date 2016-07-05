@@ -2,6 +2,7 @@
 
 export(phylocurve)
 export(phylodiv)
+export(phyloendemism)
 export(phylomatchr)
 export(phyloresembl)
 importFrom(ape,drop.tip)

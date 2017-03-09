@@ -8,6 +8,7 @@ The package includes functions for the calculation of:
   * PD rarefaction curves
   * PD resemblance measures
   * Phylogenetic endemism
+  * Conservation planning algorithms
   * more coming soon ...
   
 ### Installation
@@ -19,6 +20,7 @@ devtools::install_github("davidnipperess/PDcalc")
 ```
 
 ### Useful references
+  * Asmyhr, M. G., Linke, S., Hose, G., & Nipperess, D. A. (2014). Systematic Conservation Planning for Groundwater Ecosystems Using Phylogenetic Diversity. PLoS One, 9(12), e115132. http://doi.org/10.1371/journal.pone.0115132
   * Chao, A., Chiu, C.-H., Hsieh, T. C., Davis, T., Nipperess, D. A., & Faith, D. P. (2015). Rarefaction and extrapolation of phylogenetic diversity. *Methods in Ecology and Evolution*, 6(4), 380–388. http://doi.org/10.1111/2041-210X.12247
   * Faith, D. P. (1992). Conservation evaluation and phylogenetic diversity. *Biological Conservation*, 61, 1–10.
   * Faith, D. P. (2013). Biodiversity and evolutionary history: useful extensions of the PD phylogenetic diversity assessment framework. *Annals of the New York Academy of Sciences*, 1289(1), 69–89. http://doi.org/10.1111/nyas.12186

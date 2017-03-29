@@ -115,6 +115,7 @@ phylocurve <- function (x, phy, stepm=1, subsampling = "individual",
     commphylo <- colSums(commphylo) # vector of site counts per branch
     union_mat <- (intercept_mat*-1) + commphylo
     union_mat <- t(union_mat) + commphylo # matrix of site count per pair of branches
+    commphylo <- t(as.matrix(commphylo)) # convert back to matrix to allow simple vectorisation
   }
   
   ### step 5: calculate rarefied PD for each value of m
@@ -139,11 +140,7 @@ phylocurve <- function (x, phy, stepm=1, subsampling = "individual",
       p <- 1-(1-(commphylo/N))^i
       pdrare <- c(pdrare, sum(p * phy$edge.length))
       varmat <- (1-(union_mat/N))^i
-      for(j in 1:length(p)) {
-        for(k in 1:length(p)) {
-          varmat[j,k] <- varmat[j,k] - (1-p[j])*(1-p[k])
-        }
-      }
+      varmat <- varmat - t(1-p) %*% (1-p)
       varmat <- varmat * phy$edge.length
       varmat <- t(varmat) * phy$edge.length
       pdvar <- c(pdvar, sum(varmat))
@@ -154,11 +151,7 @@ phylocurve <- function (x, phy, stepm=1, subsampling = "individual",
       p <- 1-(exp(lchoose((N-commphylo),i)-lchoose(N,i)))
       pdrare <- c(pdrare, sum(p * phy$edge.length))
       varmat <- exp(lchoose((N-union_mat),i)-lchoose(N,i))
-      for(j in 1:length(p)) {
-        for(k in 1:length(p)) {
-          varmat[j,k] <- varmat[j,k] - (1-p[j])*(1-p[k])
-        }
-      }
+      varmat <- varmat - t(1-p) %*% (1-p)
       varmat <- varmat * phy$edge.length
       varmat <- t(varmat) * phy$edge.length
       pdvar <- c(pdvar, sum(varmat))

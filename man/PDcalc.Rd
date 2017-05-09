@@ -8,4 +8,3 @@
 \description{
 PDcalc: a package for the PD calculus
 }
-

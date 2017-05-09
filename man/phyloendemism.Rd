@@ -51,4 +51,3 @@ Takes a community data table and a rooted phylogenetic tree (with
   approach for identifying geographical concentrations of evolutionary 
   history. \emph{Molecular Ecology} 18(19): 4061-4072.}}
 }
-

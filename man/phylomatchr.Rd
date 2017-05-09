@@ -28,4 +28,3 @@ A list of two vectors. The first vector is the taxa found in the tree
 \description{
 Matches taxa in a set of sites with the tips of a phylogenetic tree
 }
-

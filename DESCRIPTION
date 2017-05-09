@@ -1,6 +1,6 @@
 Package: PDcalc
 Title: An implementation of the Phylogenetic Diversity (PD) calculus in R
-Version: 0.2.1.9000
+Version: 0.2.5.9000
 Authors@R: c(person("David", "Nipperess", email = "david.nipperess@mq.edu.au", role = c("aut", "cre")),
           person("Peter", "Wilson", email = "peter.wilson@mq.edu.au", role = "aut"))
 Description: PDcalc is a package for calculating various diversity
@@ -12,4 +12,4 @@ Imports:
     ape
 License: GPL-3
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

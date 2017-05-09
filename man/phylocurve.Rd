@@ -61,4 +61,3 @@ efficient than randomisation methods.
   phylogenetic diversity under rarefaction. \emph{Methods in Ecology & 
   Evolution} 4: 566-572.}}
 }
-

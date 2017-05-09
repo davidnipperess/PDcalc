@@ -67,4 +67,3 @@ Takes a community data table and a rooted phylogenetic tree (with
   Diversity among ecological assemblages. \emph{Journal of Vegetation
   Science} 21: 809-820.}}
 }
-

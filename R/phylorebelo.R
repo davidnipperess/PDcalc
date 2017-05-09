@@ -1,4 +1,5 @@
 #' Heuristic algorithm optimising the accumulation of Phylogenetic Diversity
+#' from aggregating sites
 #' 
 #' A heuristic algorithm that seeks to prioritise sites for conservation by 
 #' optimising the accumulation of Phylogenetic Diversity (PD). PD will acumulate
@@ -34,11 +35,11 @@
 #'   each sample (row) and iteration.
 #' @importFrom ape drop.tip
 #' @references \itemize{ \item{Asmyhr MG, Linke S, Hose G, & Nipperess DA. 2014.
-#'   Systematic Conservation Planning for Groundwater Ecosystems Using
-#'   Phylogenetic Diversity. \emph{PLoS One} 9: e115132} \item{Rebelo AG &
-#'   Siegfried WR. 1992. Where should nature reserves be located in the Cape
-#'   Floristic Region, South Africa? Models for the spatial configuration of a
-#'   reserve network aimed at maximizing the protection of floral diversity.
+#'   Systematic Conservation Planning for Groundwater Ecosystems Using 
+#'   Phylogenetic Diversity. \emph{PLoS One} 9: e115132} \item{Rebelo AG & 
+#'   Siegfried WR. 1992. Where should nature reserves be located in the Cape 
+#'   Floristic Region, South Africa? Models for the spatial configuration of a 
+#'   reserve network aimed at maximizing the protection of floral diversity. 
 #'   \emph{Conservation Biology} 6: 243–252.}}
 #' @export
 #' 

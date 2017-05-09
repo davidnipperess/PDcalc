@@ -47,4 +47,3 @@ includes the path to the root of the tree.
   the selection of networks of conservation areas. \emph{Biological
   Conservation} 105: 103-111.}}
 }
-

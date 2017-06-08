@@ -9,6 +9,7 @@ The package includes functions for the calculation of:
   * PD resemblance measures
   * Phylogenetic endemism
   * Conservation planning algorithms
+  * Polytomy resolving algorithm (for ultrametric trees)
   * more coming soon ...
   
 ### Installation
@@ -27,4 +28,5 @@ devtools::install_github("davidnipperess/PDcalc")
   * Minh, B., Klaere, S., & Haeseler, A. (2006). Phylogenetic Diversity within Seconds. Systematic Biology, 55(5), 769–773. http://doi.org/10.1080/10635150600981604
   * Nipperess, D. A., Faith, D. P., & Barton, K. (2010). Resemblance in phylogenetic diversity among ecological assemblages. *Journal of Vegetation Science*, 21(5), 809–820. http://doi.org/10.1111/j.1654-1103.2010.01192.x
   * Nipperess, D. A., & Matsen, F. A., IV. (2013). The mean and variance of phylogenetic diversity under rarefaction. *Methods in Ecology and Evolution*, 4, 566–572. http://doi.org/10.1111/2041-210X.12042
+  * Rangel, T. F., Colwell, R. K., Graves, G. R., Fučíková, K., Rahbek, C., & Diniz-Filho, J. A. F. (2015). Phylogenetic uncertainty revisited: Implications for ecological analyses. *Evolution*, 69(5), 1301–1312. http://doi.org/10.1111/evo.12644
   * Rosauer D, Laffan S. W., Crisp M. D., Donnellan S. C. & Cook L. G. 2009. Phylogenetic endemism: a new approach for identifying geographical concentrations of evolutionary history. *Molecular Ecology*, 18(19), 4061-4072. http://doi.org/10.1111/j.1365-294X.2009.04311.x

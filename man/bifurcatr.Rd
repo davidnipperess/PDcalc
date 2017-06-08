@@ -17,6 +17,12 @@ multiple equally plausible trees). Default is 1.}
 If \code{runs = 1}, a phylo object (see \code{ape} package) is 
   returned. If \code{runs > 1}, then a multiPhylo object (see \code{ape} 
   package) is returned, consisting of one tree for each run of the algorithm.
+  Because the algorithm simply appends new edges to the resulting phylo 
+  object, it will not plot correctly in \code{ape} (the plot function 
+  requires trees to be organised in cladewise order). This can be easily 
+  fixed by writing the tree (or trees) to a Newick or Nexus file (using the
+  \code{write.tree} or \code{write.nexus} in the \code{ape} package) and then
+  reading the file back into R.
 }
 \description{
 Many trees used in phylogenetic ecology include polytomies (nodes with more 
@@ -44,15 +50,10 @@ solutions (which could be very large).
 }
 \examples{
 phy <- read.tree(text="((a:1,b:1):1,(c:1,d:1,e:1):1,f:2,g:2,h:2);")
-plot(phy)
 resolved <- bifurcatr(phy,runs=1000)
-plot(resolved[[1]])
-plot(resolved[[10]])
-plot(resolved[[100]])
-plot(resolved[[1000]])
 }
 \references{
-\itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fučíková K,
-  Rahbek C, & Diniz-Filho JAF (2015). Phylogenetic uncertainty revisited:
+\itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fučíková K, 
+  Rahbek C, & Diniz-Filho JAF (2015). Phylogenetic uncertainty revisited: 
   Implications for ecological analyses. \emph{Evolution} 69: 1301–1312.}}
 }

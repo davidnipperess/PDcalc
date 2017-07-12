@@ -10,6 +10,7 @@ The package includes functions for the calculation of:
   * Phylogenetic endemism
   * Conservation planning algorithms
   * Polytomy resolving algorithm (for ultrametric trees)
+  * Expected Phylogenetic Diversity
   * more coming soon ...
   
 ### Installation

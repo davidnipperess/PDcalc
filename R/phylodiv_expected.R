@@ -93,13 +93,13 @@ phylodiv.expected <- function (x, phy, occur=TRUE) {
   
   ### step 5: determining branch probabilities and PD
   
-  pd <- numeric(length=nrow(x))
-  
-  for(j in 1:nrow(x)) {
-    probs <- t(phylomatrix)*x[j,]
+  site_pd <- function(x_vector,phylomatrix) {
+    probs <- t(phylomatrix)*x_vector
     probs <- 1-apply(1-probs,MARGIN=1,FUN=prod)
-    pd[j] <- sum(probs*phy$edge.length)
+    sum(probs*phy$edge.length)
   }
+  
+  pd <- apply(x,MARGIN=1,FUN=site_pd,phylomatrix)
   
   return (pd)
   

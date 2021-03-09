@@ -95,7 +95,7 @@ phylodiv.expected <- function (x, phy, occur=TRUE) {
   
   site_pd <- function(x_vector,phylomatrix) {
     probs <- phylomatrix*x_vector
-    probs <- 1-apply(1-probs,MARGIN=1,FUN=prod)
+    probs <- 1-apply(1-probs,MARGIN=2,FUN=prod)
     sum(probs*phy$edge.length)
   }
   

@@ -3,8 +3,4 @@
 \docType{package}
 \name{PDcalc}
 \alias{PDcalc}
-\alias{PDcalc-package}
 \title{PDcalc: a package for the PD calculus}
-\description{
-PDcalc: a package for the PD calculus
-}

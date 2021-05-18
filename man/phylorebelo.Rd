@@ -2,7 +2,7 @@
 % Please edit documentation in R/phylorebelo.R
 \name{phylorebelo}
 \alias{phylorebelo}
-\title{Heuristic algorithm optimising the accumulation of Phylogenetic Diversity
+\title{Greedy algorithm optimising the accumulation of Phylogenetic Diversity
 from aggregating sites}
 \usage{
 phylorebelo(x, phy, iterations = 1)
@@ -32,7 +32,7 @@ A list of two numeric matrices. The first matrix gives the optimised
 }
 \description{
 A heuristic algorithm that seeks to prioritise sites for conservation by 
-optimising the accumulation of Phylogenetic Diversity (PD). PD will acumulate
+optimising the accumulation of Phylogenetic Diversity (PD). PD will accumulate
 most rapidly when the samples are pooled in a particular sequence such that 
 the gain in PD of each additional sample is maximised.
 }

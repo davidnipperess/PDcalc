@@ -34,7 +34,7 @@
 #'   fixed by writing the tree (or trees) to a Newick or Nexus file (using the
 #'   \code{write.tree} or \code{write.nexus} in the \code{ape} package) and then
 #'   reading the file back into R.
-#' @references \itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fučíková K, 
+#' @references \itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fucikova K, 
 #'   Rahbek C, & Diniz-Filho JAF (2015). Phylogenetic uncertainty revisited: 
 #'   Implications for ecological analyses. \emph{Evolution} 69: 1301–1312.}}
 #' @export

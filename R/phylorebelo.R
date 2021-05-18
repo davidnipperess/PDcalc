@@ -1,8 +1,8 @@
-#' Heuristic algorithm optimising the accumulation of Phylogenetic Diversity
+#' Greedy algorithm optimising the accumulation of Phylogenetic Diversity
 #' from aggregating sites
 #' 
 #' A heuristic algorithm that seeks to prioritise sites for conservation by 
-#' optimising the accumulation of Phylogenetic Diversity (PD). PD will acumulate
+#' optimising the accumulation of Phylogenetic Diversity (PD). PD will accumulate
 #' most rapidly when the samples are pooled in a particular sequence such that 
 #' the gain in PD of each additional sample is maximised.
 #' @param x is the community data given as a \code{data.frame} or \code{matrix} 

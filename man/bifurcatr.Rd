@@ -53,7 +53,7 @@ phy <- read.tree(text="((a:1,b:1):1,(c:1,d:1,e:1):1,f:2,g:2,h:2);")
 resolved <- bifurcatr(phy,runs=1000)
 }
 \references{
-\itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fučíková K, 
+\itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fucikova K, 
   Rahbek C, & Diniz-Filho JAF (2015). Phylogenetic uncertainty revisited: 
   Implications for ecological analyses. \emph{Evolution} 69: 1301–1312.}}
 }

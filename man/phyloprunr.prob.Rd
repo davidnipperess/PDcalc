@@ -23,7 +23,7 @@ phylo object (as in the \code{ape} package).}
 
 \item{species}{is an optional \code{character} vector of species names (tree
 will be trimmed to match). Each species must match to a tip label in
-\code{phy}.By default, all tip labels in \code{phy} will be included.}
+\code{phy}. By default, all tip labels in \code{phy} will be included.}
 
 \item{managed}{is a \code{character} vector of species names to be included
 on the candidate list for conservation. Each name must match to a name in
@@ -32,7 +32,7 @@ candidates.}
 
 \item{retain}{is an optional \code{character} vector of species names that
 are never pruned from the candidate list (i.e. always assumed to be
-conserved). Each name must match to to name in \code{managed}.}
+conserved). Each name must match to a name in \code{managed}.}
 
 \item{survival}{is a \code{numeric} vector of survival probabilities, given
 no management for conservation, corresponding to each species in
@@ -65,7 +65,7 @@ A pruning algorithm that seeks to maximise gains in expected Phylogenetic
 Diversity (PD) from successfully managing threatened species from a candidate
 list. Starting with all candidate species being assumed to be successfully
 managed, the algorithm proceeds by stepwise removal of species from the
-candidate list that providing the smallest gain (from conservation) at that
+candidate list providing the smallest gain (from conservation) at that
 step. The pruned candidate list at each step will be optimal for conserving
 Phylogenetic Diversity for that number of species. The reverse order in which
 species are pruned gives the priority for conservation.
@@ -90,5 +90,5 @@ species are pruned gives the priority for conservation.
 \references{
 \itemize{ \item{Minh B., Klaere S. & Haeseler A. (2006).
   Phylogenetic Diversity within Seconds. \emph{Systematic Biology} 55:
-  769–773.}}
+  769-773.}}
 }

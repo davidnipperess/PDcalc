@@ -8,7 +8,7 @@
 #'   phylo object (as in the \code{ape} package).
 #' @param species is an optional \code{character} vector of species names (tree
 #'   will be trimmed to match). Each species must match to a tip label in
-#'   \code{phy}.By default, all tip labels in \code{phy} will be included.
+#'   \code{phy}. By default, all tip labels in \code{phy} will be included.
 #' @param managed is a \code{character} vector of species names to be managed
 #'   for conservation. Each name must match to a name in \code{species}. By
 #'   default, all names in \code{species} will be included.
@@ -39,12 +39,12 @@
 #'   phylogenetic diversity. \emph{Biological Conservation} 61: 1-10.}
 #'   \item{Faith DP. 2013. Biodiversity and evolutionary history: useful
 #'   extensions of the PD phylogenetic diversity assessment framework.
-#'   \emph{Annals of the New York Academy of Sciences} 1289: 69–89.}
+#'   \emph{Annals of the New York Academy of Sciences} 1289: 69-89.}
 #'   \item{Witting L. & Loeschcke V. 1995. The optimization of biodiversity
-#'   conservation. \emph{Biological Conservation} 71: 205–207.}}
+#'   conservation. \emph{Biological Conservation} 71: 205-207.}}
 #' @export
 
-phylodiv.expect.secured <- function(phy,species=phy$tip.label,managed=species,survival,feasibility=1,success=0.95) {
+phylodiv.expect.secured <- function (phy, species=phy$tip.label, managed=species, survival, feasibility=1, success=0.95) {
   
   # trim tree to "species"
   phy <- drop.tip (phy, which(!species%in%phy$tip.label))

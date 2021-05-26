@@ -43,6 +43,7 @@
 #'   \item{Witting L. & Loeschcke V. 1995. The optimization of biodiversity
 #'   conservation. \emph{Biological Conservation} 71: 205-207.}}
 #' @export
+#' 
 
 phylodiv.expect.secured <- function (phy, species=phy$tip.label, managed=species, survival, feasibility=1, success=0.95) {
   

@@ -46,6 +46,7 @@
 #' colnames(x) <- c("A","B","C")
 #' phy <- read.tree(text="((A:1,B:1):1,C:2);")
 #' phylodiv.expected(x,phy,occur=TRUE)
+
 phylodiv.expected <- function (x, phy, occur=TRUE) {
   
   ### step 1: matching taxa and trimming the tree to match the community data

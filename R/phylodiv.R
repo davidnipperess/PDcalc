@@ -33,7 +33,7 @@
 #'   Conservation} 105: 103-111.}}
 #' @export
 #' 
-#' @examples
+
 phylodiv <- function (x, phy) {
   
   ### step 1: matching taxa and trimming the tree to match the community data

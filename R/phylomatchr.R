@@ -16,7 +16,7 @@
 #'   but not in the sites. The second vector is the taxa found in the sites but
 #'   not in the tree.
 #' @export
-#' @examples
+
 phylomatchr <- function(x,phy) {
 
   missing_in_x <- setdiff(phy$tip.label, colnames(x))

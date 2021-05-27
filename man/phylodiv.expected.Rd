@@ -47,12 +47,6 @@ PD that always includes the path to the root of the tree.
   taxa of a sample is not the root of the tree, then the set of branches 
   connecting this node to the root are also included in the calculation.
 }
-\examples{
-x <- matrix(data=c(0.8,0.6,0.2,0.2,0.9,0.1,0.1,0.8,0.9),nrow=3,ncol=3)
-colnames(x) <- c("A","B","C")
-phy <- read.tree(text="((A:1,B:1):1,C:2);")
-phylodiv.expected(x,phy,occur=TRUE)
-}
 \references{
 \itemize{\item{Faith DP. 1992. Conservation evaluation and 
   phylogenetic diversity. \emph{Biological Conservation} 61: 1-10.} 

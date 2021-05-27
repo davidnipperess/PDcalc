@@ -41,11 +41,7 @@
 #'   conservation. \emph{Biological Conservation} 71: 205–207.}}
 #' @export
 #' 
-#' @examples
-#' x <- matrix(data=c(0.8,0.6,0.2,0.2,0.9,0.1,0.1,0.8,0.9),nrow=3,ncol=3)
-#' colnames(x) <- c("A","B","C")
-#' phy <- read.tree(text="((A:1,B:1):1,C:2);")
-#' phylodiv.expected(x,phy,occur=TRUE)
+
 
 phylodiv.expected <- function (x, phy, occur=TRUE) {
   

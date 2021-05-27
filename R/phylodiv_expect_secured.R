@@ -14,7 +14,7 @@
 #'   default, all names in \code{species} will be included.
 #' @param survival is a \code{numeric} vector of survival probabilities, given
 #'   no management for conservation, corresponding to each species in
-#'   \code{managed}.
+#'   \code{species}.
 #' @param feasibility is an optional \code{numeric} vector of probabilities of
 #'   successfully managing each species in \code{managed}. By default,
 #'   probability of success is assumed to be 1.
@@ -43,6 +43,12 @@
 #'   \item{Witting L. & Loeschcke V. 1995. The optimization of biodiversity
 #'   conservation. \emph{Biological Conservation} 71: 205-207.}}
 #' @export
+#' @examples 
+#' data(bandicoot_tree)
+#' threatened <- c("Macrotis_lagotis","Rhynchomeles_prattorum","Peroryctes_broadbenti",
+#'        "Isoodon_auratus","Perameles_gunnii","Perameles_bougainville")
+#' probs <- c(0.01,0.90,0.01,0.30,0.99,0.99,0.99,0.99,0.99,0.99,0.30,0.99,0.90,0.99,0.99,0.99,0.90,0.01,0.90)
+#' phylodiv.expect.secured(bandicoot_tree,managed=threatened,survival=probs)
 #' 
 
 phylodiv.expect.secured <- function (phy, species=phy$tip.label, managed=species, survival, feasibility=1, success=0.95) {

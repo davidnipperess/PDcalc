@@ -50,7 +50,7 @@
 #'   Science} 21: 809-820.}}
 #' @export
 #' 
-#' @examples
+
 phyloresembl <- function (x, phy, incidence = TRUE, method = "sorensen", dissim = TRUE) {
 
 METHODS <- c("sorensen", "jaccard", "simpson", "faith")

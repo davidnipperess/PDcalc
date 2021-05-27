@@ -39,7 +39,6 @@
 #'   769–773.}}
 #' @export
 #' 
-#' @examples
 
 phyloprunr <- function(phy, size, iterations=1, trees=TRUE) {
   max_PD_trees <- vector(mode="list",length=iterations)

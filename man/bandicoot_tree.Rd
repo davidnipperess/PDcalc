@@ -18,6 +18,6 @@ Westerman (2016).
 \references{
 Kear BP, Aplin KP & Westerman M (2016) Bandicoot fossils and DNA
   elucidate lineage antiquity amongst xeric-adapted Australasian marsupials.
-  Scientific Reports 6: 37537.
+  \emph{Scientific Reports} 6: 37537.
 }
 \keyword{datasets}

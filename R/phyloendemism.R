@@ -37,7 +37,6 @@
 #'   history. \emph{Molecular Ecology} 18(19): 4061-4072.}}
 #' @export
 #' 
-#' @examples
 
 phyloendemism <- function (x, phy, weighted=TRUE) {
 

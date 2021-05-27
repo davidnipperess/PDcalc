@@ -87,6 +87,13 @@ species are pruned gives the priority for conservation.
   successful. A further optional argument (\code{cost}) allows for gains to
   be divided by their respective costs.
 }
+\examples{
+data(bandicoot_tree)
+threatened <- c("Macrotis_lagotis","Rhynchomeles_prattorum","Peroryctes_broadbenti",
+       "Isoodon_auratus","Perameles_gunnii","Perameles_bougainville")
+probs <- c(0.01,0.90,0.01,0.30,0.99,0.99,0.99,0.99,0.99,0.99,0.30,0.99,0.90,0.99,0.99,0.99,0.90,0.01,0.90)
+phyloprunr.prob(bandicoot_tree,managed=threatened,survival=probs)
+}
 \references{
 \itemize{ \item{Minh B., Klaere S. & Haeseler A. (2006).
   Phylogenetic Diversity within Seconds. \emph{Systematic Biology} 55:

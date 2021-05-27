@@ -44,7 +44,7 @@
 #'   Evolution} 4: 566-572.}}
 #' @export
 #' 
-#' @examples
+
 phylocurve <- function (x, phy, stepm=1, subsampling = "individual", 
                         replace = FALSE) {
 

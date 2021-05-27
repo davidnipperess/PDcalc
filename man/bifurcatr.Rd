@@ -48,10 +48,6 @@ solutions (which could be very large).
   \code{runs} argument) to generate several equally plausible trees. The 
   algorithm is a modification of that descibed in Rangel et al. (2015).
 }
-\examples{
-phy <- read.tree(text="((a:1,b:1):1,(c:1,d:1,e:1):1,f:2,g:2,h:2);")
-resolved <- bifurcatr(phy,runs=1000)
-}
 \references{
 \itemize{ \item{Rangel TF, Colwell RK, Graves GR, Fucikova K, 
   Rahbek C, & Diniz-Filho JAF (2015). Phylogenetic uncertainty revisited: 

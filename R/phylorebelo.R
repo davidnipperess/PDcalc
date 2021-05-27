@@ -43,7 +43,6 @@
 #'   \emph{Conservation Biology} 6: 243–252.}}
 #' @export
 #' 
-#' @examples
 
 phylorebelo <- function (x, phy, iterations=1) {
 

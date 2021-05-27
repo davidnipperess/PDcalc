@@ -27,7 +27,7 @@ default, all names in \code{species} will be included.}
 
 \item{survival}{is a \code{numeric} vector of survival probabilities, given
 no management for conservation, corresponding to each species in
-\code{managed}.}
+\code{species}.}
 
 \item{feasibility}{is an optional \code{numeric} vector of probabilities of
 successfully managing each species in \code{managed}. By default,
@@ -57,6 +57,14 @@ version of PD that always includes the path to the root of the tree.
   1995; Faith 2013). An optional argument (\code{feasibility}) allows for the
   gain of conserving any species to be down-weighted by the probability that
   management will be successful.
+}
+\examples{
+data(bandicoot_tree)
+threatened <- c("Macrotis_lagotis","Rhynchomeles_prattorum","Peroryctes_broadbenti",
+       "Isoodon_auratus","Perameles_gunnii","Perameles_bougainville")
+probs <- c(0.01,0.90,0.01,0.30,0.99,0.99,0.99,0.99,0.99,0.99,0.30,0.99,0.90,0.99,0.99,0.99,0.90,0.01,0.90)
+phylodiv.expect.secured(bandicoot_tree,managed=threatened,survival=probs)
+
 }
 \references{
 \itemize{\item{Faith DP. 1992. Conservation evaluation and

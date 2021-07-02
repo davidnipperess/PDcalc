@@ -1,0 +1,172 @@
+---
+title: "Conservation prioritisation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Conservation prioritisation}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(fig.width=6, fig.height=4, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+## Expected Phylogenetic Diversity
+
+Expected diversity (Weitzman 1992) is the amount of biodiversity expected to still exist at some point in the future (e.g. 100 years from now), derived from estimated survival probabilities of species. 
+
+Expected Phylogenetic Diversity (Faith 2008) specifically measures the sum of branch lengths of a phylogenetic tree expected to still exist in the future. Each branch segment (edge connecting node to node, or node to tip) has a length proportional to the amount of independent evolution between divergence events. Typically, branch length is measured in units of molecular genetic distance, morphological character changes, or difference in time between dated nodes. The length of each branch segment is weighted by the probability that at least one descendant species survives in the future and is then summed:
+
+$$\sum_{j \in T} [L_j*(1-\prod_{i \in S_j}(1-p_i))]$$
+where $L_j$ is the length of branch segment $j$ of tree $T$ and $p_i$ is the probability of survival of species $i$ of the set $S_j$ descendant from branch segment $j$.
+
+## Application to conservation biology
+
+A key indicator of conservation success is reduction in the rate of loss of biodiversity by improving the survival of individual species through conservation actions. This allows for conservation decision making that chooses among options (sets of species) on the principle of maximising conservation benefit by minimising expected loss. Predicted conservation benefit can be measured as the gain in expected Phylogenetic Diversity achieved if survival probabilities of particular species were improved to meet some target for successful management. Formally, we would assign each candidate species in a conservation scenario a new survival probability ($\hat{p}_i$) if that species were to be managed for conservation:
+
+$$\hat{p}_i=p_i+(s-p_i)*f_i$$
+
+where $s$ is the target survival probability for successful management and $f_i$ is the probability (feasibility) of that species successfully achieving the target ($f_i$ may be assumed to be 1 and thus $\hat{p}_i=s$). The conservation benefit of a scenario is then determined by calculating expected Phylogenetic Diversity with and without substituting the new survival probabilities for potentially managed species.
+
+Assuming that not all species can be managed, it is desirable to determine which subsets of species are optimal for minimising loss of Phylogenetic Diversity and thus which species should be prioritised for conservation. A greedy algorithm can be used to 'prune' a candidate list of species, dropping one species at a time, such that conservation benefit is maximised at each step (Hartmann & Steel 2006, Minh et al. 2006). Starting with all species on the candidate list being assumed to be managed for conservation, an improved survival probability ($\hat{p}_i$) is determined for each and substituted into the equation for expected Phylogenetic Diversity. Then, the potential loss in expected Phylogenetic Diversity if each species on the list were not managed for conservation (i.e. replacing $\hat{p}_i$ with $p_i$) is calculated, and the species providing the smallest loss is removed from the list of candidates. The algorithm proceeds by removing one species at a time from the candidate list, effectively maximising expected Phylogenetic Diversity at each step, until the list of candidates has been exhausted. The reverse order in which species are dropped from the list is a ranking that prioritises those species making the largest improvements to expected Phylogenetic Diversity if they were managed for conservation.
+
+## Example - bandicoots of the world
+
+The bandicoots (order Peramelemorphia) are a group of small, omnivorous, terrestrial marsupials, comprising around 20 living species distributed in Australia, New Guinea and parts of Eastern Indonesia. This evolutionarily distinctive group has declined in diversity and distribution in the past two centuries.
+
+Evolutionary relationships among living, extinct and fossil species are relatively well understood, with a comprehensive, dated phylogenetic tree having been published by Kear et al. (2016). A version of this tree, trimmed to living and recently extinct species, is included in the `PDcalc` package (Figure 1).
+
+```{r bandicoot_tree, echo=FALSE}
+library(ape)
+library(PDcalc)
+data("bandicoot_tree")
+plot(bandicoot_tree,cex=0.75)
+axisPhylo()
+```
+
+**Figure 1:** Phylogenetic tree of living and recently extinct bandicoots. Branch lengths are in millions of years between divergence events. Adapted from Kear et al. (2016).
+
+### Original Phylogenetic Diversity of bandicoots
+
+From this starting point, let us first calculate original Phylogenetic Diversity (i.e. without extinctions) as simply the sum of branch lengths on the phylogenetic tree.
+
+```
+library(PDcalc)
+data("bandicoot_tree")
+PD_original <- sum(bandicoot_tree$edge.length)
+PD_original
+```
+
+This gives us a total of **254** million years of original Phylogenetic Diversity.
+
+### Offsetting expected loss of Phylogenetic Diversity of bandicoots
+
+Of the 19 species on the tree, six are recognised by the IUCN Red List as being threatened, three are listed as extinct, and the remainder are considered "Least Concern" (Table 1). Following Mooers et al. (2008), each species is assigned a notional probability of survival (over 100 years) based on their current IUCN Red List status. Note that species listed as Extinct are still given a small survival probability to account for the possibility of rediscovery.
+
+**Table 1:** Living and recently extinct species of bandicoot on the phylogenetic tree, their IUCN status, and assigned survival probability (in 100 years). Species are listed in the same order as the tip labels in the tree.
+
+| Species | IUCN status | Survival probability |
+| ------- | ----------- | -------------------- |
+| *Chaeropus ecaudatus* | Extinct | 0.01 |
+| *Macrotis lagotis* | Vulnerable | 0.90 |
+| *Macrotis leucura* | Extinct | 0.01 |
+| *Rhynchomeles prattorum* | Endangered | 0.30 |
+| *Echymipera clara* | Least Concern | 0.99 |
+| *Echymipera kalubu* | Least Concern | 0.99 |
+| *Echymipera rufescens* | Least Concern | 0.99 |
+| *Microperoryctes papuensis* | Least Concern | 0.99 |
+| *Microperoryctes ornata* | Least Concern | 0.99 |
+| *Microperoryctes longicauda* | Least Concern | 0.99 |
+| *Peroryctes broadbenti* | Endangered | 0.30 |
+| *Peroryctes raffrayana* | Least Concern | 0.99 |
+| *Isoodon auratus* | Vulnerable | 0.90 |
+| *Isoodon macrourus* | Least Concern | 0.99 |
+| *Isoodon obesulus* | Least Concern | 0.99 |
+| *Perameles nasuta* | Least Concern | 0.99 |
+| *Perameles gunnii* | Vulnerable | 0.90 |
+| *Perameles eremiana* | Extinct | 0.01 |
+| *Perameles bougainville* | Vulnerable | 0.90 |
+
+An interesting analysis would be to assess the gain in expected Phylogenetic Diversity if all threatened species were to be made relatively secure through conservation action. Conservatively, we might assume that 'secure' is equivalent to a survival probability of 95% over 100 years ($\hat{p}_i=0.95$). We might also assume for this scenario analysis that conservation actions are completely successful ($f_i=1$). Thus, we would need to calculate expected Phylogenetic Diversity before and after conservation action. We can do this with the `phylodiv.expect.secured` function in the `PDcalc` package. To run this analysis, we need to define a list of potentially managed species, the survival probabilities for all species in the tree, and the target survival probability for a successfully secured species.
+
+```
+threatened <- c("Macrotis_lagotis","Rhynchomeles_prattorum","Peroryctes_broadbenti",
+        "Isoodon_auratus","Perameles_gunnii","Perameles_bougainville")
+probs <- c(0.01,0.90,0.01,0.30,0.99,0.99,0.99,0.99,0.99,0.99,0.30,0.99,0.90,0.99,0.99,0.99,0.90,0.01,0.90)
+  # these survival probabilities are in the same order as the tip labels in the tree
+PD_expected <- phylodiv.expect.secured(phy=bandicoot_tree, managed=threatened, survival=probs, feasibility=1, success=0.95)
+PD_expected
+PD_expected/PD_original * 100 # conversion to percentage
+```
+
+Results of the scenario analysis are summarised in Table 2.
+
+**Table 2:** Expected Phylogenetic Diversity of bandicoots with and without securing threatened species through conservation action.
+
+| Scenario | Expected Phylogenetic Diversity (Millions of years) | Expected Phylogenetic Diversity (%) |
+| -------- | -------- | ------- |
+| All threatened species secured | 197.38 | 77.71 |
+| No threatened species secured | 182.28 | 71.76 |
+
+### Optimisation and prioritisation of conservation actions for bandicoots
+
+If not all species can be successfully secured, it is important to know which subsets of the threatened species are most optimal for conservation and which species should be prioritised. The `phyloprunr.prob` function in `PDcalc` utilises a greedy algorithm (as described above) to maximise expected Phylogenetic Diversity for any number of threatened species through potential conservation action. Assuming that we wish to achieve a survival probability of 95% over 100 years for each managed species, and that conservation actions will be successful at achieving this target, we can implement the algorithm as follows.
+
+```
+optimisation <- phyloprunr.prob(phy=bandicoot_tree, managed=threatened, survival=probs, feasibility=1, success=0.95)
+optimisation
+
+```
+
+Algorithm output is shown in Table 3.
+
+**Table 3:** Output of the `phyloprunr.prob` function in the `PDcalc` package.
+
+| pruning.order | expected.PD.secured | budget |
+| ------------- | --------------------| ------ |
+| None          |  197.3850           |  6     |
+| Isoodon_auratus |           197.1350 |     5 |
+| Perameles_gunnii |           196.8814 |     4 |
+| Perameles_bougainville |           196.2828 |     3 |
+| Macrotis_lagotis |           194.6958 |     2 |
+| Peroryctes_broadbenti |           189.4308 |     1 |
+| Rhynchomeles_prattorum |           182.2808 |     0 |
+
+The first column gives the order in which species are dropped from the candidate list of species to be potentially managed. Initially, all species are assumed to be managed (hence, "None"). As species are dropped from the candidate list, the values in the second column give the expected Phylogenetic Diversity *after* dropping the species in the first column. The third column tracks the budget calculated by summing the cost of conservation action for each species then on the candidate list. By default, `cost=1` for all species and therefore, in this case, the third column simply gives the count of species on the candidate list at that step in the algorithm.
+
+The outcome of the optimisation can be usefully graphed (Figure 2), including comparison with a random prioritisation, as follows.
+
+```
+plot(optimisation$budget,optimisation$expected.PD.secured/PD_original*100,type="l",xlab="Number of species secured",ylab="Expected Phylogenetic Diversity (%)",lwd=2)
+random <- phyloprunr.prob(phy=bandicoot_tree, managed=threatened, survival=probs, feasibility=1, success=0.95, random = TRUE)
+lines(random$budget,random$expected.PD.secured/PD_original*100,col="grey")
+
+```
+
+```{r optimisation_graph, echo=FALSE}
+data("bandicoot_tree")
+threatened <- c("Macrotis_lagotis","Rhynchomeles_prattorum","Peroryctes_broadbenti",
+        "Isoodon_auratus","Perameles_gunnii","Perameles_bougainville")
+probs <- c(0.01,0.90,0.01,0.30,0.99,0.99,0.99,0.99,0.99,0.99,0.30,0.99,0.90,0.99,0.99,0.99,0.90,0.01,0.90)
+PD_original <- sum(bandicoot_tree$edge.length)
+optimisation <- phyloprunr.prob(phy=bandicoot_tree, managed=threatened, survival=probs, feasibility=1, success=0.95)
+plot(optimisation$budget,optimisation$expected.PD.secured/PD_original*100,type="l",xlab="Number of species secured",ylab="Expected Phylogenetic Diversity (%)",lwd=2)
+random <- phyloprunr.prob(phy=bandicoot_tree, managed=threatened, survival=probs, feasibility=1, success=0.95, random = TRUE)
+lines(random$budget,random$expected.PD.secured/PD_original*100,col="grey")
+
+```
+
+**Figure 2:** Expected Phylogenetic Diversity (%) as a function of the number of species successfully secured by conservation actions. Black line is the optimal solution determined by a greedy algorithm. Grey line is a solution achieved by randomly choosing species to secure.
+
+The reverse order in which species are dropped by the greedy algorithm (Table 3) gives a ranked prioritisation for conservation that will maximise expected Phylogenetic Diversity. In this example, the Seram Bandicoot (*Rhynchomeles prattorum*) is the most important species to secure. This is because of both its relatively high probability of extinction (listed as "Endangered") and lack of close relatives (diverged from *Echymipera* spp. more than 10 million years ago).
+
+## References
+
+- Faith DP (2008) Threatened species and the potential loss of phylogenetic diversity: conservation scenarios based on estimated extinction probabilities and phylogenetic risk analysis. *Conservation Biology* 22(6): 1461–1470.
+- Hartmann K & Steel M (2006) Maximizing phylogenetic diversity in biodiversity conservation: Greedy solutions to the Noah's Ark problem. *Systematic Biology* 55(4): 644-651.
+- Kear BP, Aplin KP & Westerman M (2016) Bandicoot fossils and DNA elucidate lineage antiquity amongst xeric-adapted Australasian marsupials. *Scientific Reports* 6: 37537.
+- Minh BQ, Klaere S, von Haeseler A (2006) Phylogenetic diversity within seconds. *Systematic Biology* 55(5): 769-773.
+- Mooers AØ, Faith DP & Maddison WP (2008) Converting Endangered Species Categories to Probabilities of Extinction for Phylogenetic Conservation Prioritization. *PLoS ONE* 3(11): e3700.
+- Weitzman M (1992) On diversity. *The Quarterly Journal of Economics* 107(2): 363–405.
+

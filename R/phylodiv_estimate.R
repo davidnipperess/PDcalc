@@ -33,7 +33,7 @@
 #'   380-388.}}
 #' @export
 
-phylodiv_estimate <- function (x, phy, subsampling = "individual") {
+phylodiv.estimate <- function (x, phy, subsampling = "individual") {
   
   ### step 1: checking if taxa match and, if so, trimming the tree to match the
   ### community data table thus creating a "community tree" (sensu Cam Webb).

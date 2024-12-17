@@ -89,12 +89,12 @@ phylodiv_estimate <- function (x, phy, subsampling = "individual") {
   ### step 5: calculate estimated PD for each site (or pool of sites)
   
   if(subsampling=="site") {
-    n <- length(x[,1]) # this gives the no. of sites
+    n <- length(x) # this gives the no. of sites
     f1 <- length(which(x==1)) # count of singleton species (found in only 1 site)
     f2 <- length(which(x==2)) # count of doubleton species (found in 2 sites)
     g1 <- sum(phy$edge.length[which(commphylo==1)]) # sum of singleton branches
     g2 <- sum(phy$edge.length[which(commphylo==2)]) # sum of doubleton branches
-    if(g2>(g1*f2)/2*f1) {
+    if(g2>(g1*f2)/(2*f1)) {
       g0 <- ((n-1)/n) * g1^2/(2*g2)
     }
     else {
@@ -103,17 +103,19 @@ phylodiv_estimate <- function (x, phy, subsampling = "individual") {
     PD_obs <- sum(ifelse(commphylo>0,1,0)*phy$edge.length) # observed PD from pooled sites
   }
   if(subsampling=="individual") {
-    n <- colSums(x) # no. of individuals per site
-    f1 <- colSums(ifelse(x==1,1,0)) # vector of counts of singleton species per site
-    f2 <- colSums(ifelse(x==2,1,0)) # vector of counts of doubleton species per site
+    n <- rowSums(x) # no. of individuals per site
+    f1 <- rowSums(ifelse(x==1,1,0)) # vector of counts of singleton species per site
+    f2 <- rowSums(ifelse(x==2,1,0)) # vector of counts of doubleton species per site
     g1 <- ifelse(commphylo==1,1,0) # matrix of branches per site that are singletons
     g1 <- g1 %*% phy$edge.length # vector of summed lengths for singleton branches per site
+    g1 <- g1[,1]
     g2 <- ifelse(commphylo==2,1,0) # matrix of branches per site that are doubletons
     g2 <- g2 %*% phy$edge.length # vector of summed lengths for doubleton branches per site
+    g2 <- g2[,1]
     g0 <- numeric(length=length(n))
-    standardChao <- which(g2>(g1*f2)/2*f1)
+    standardChao <- which(g2>(g1*f2)/(2*f1))
     g0[standardChao] <- ((n[standardChao]-1)/n[standardChao]) * g1[standardChao]^2/(2*g2[standardChao])
-    altChao <- which(!g2>(g1*f2)/2*f1)
+    altChao <- which(!g2>(g1*f2)/(2*f1))
     g0[altChao] <- ((n[altChao]-1)/n[altChao]) * (g1[altChao]*(f1[altChao]-1))/(2*(f2[altChao]+1))
     PD_obs <- ifelse(commphylo>0,1,0) %*% phy$edge.length # observed PD per site
   }

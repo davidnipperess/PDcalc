@@ -25,8 +25,9 @@
 #'   data are converted to incidence (if not already) and then pooled. When
 #'   subsampling is by individual, estimated PD is calculated for every
 #'   sample/site.
-#' @return a \code{numeric} vector giving estimated PD values for every
-#'   sample/site or a single value for pooled samples/sites.
+#' @return a \code{list}, giving observed and estimated PD values. Each element
+#'   of the list is a \code{numeric}, giving PD values for every sample/site or a
+#'   single value for pooled samples/sites.
 #' @importFrom ape drop.tip
 #' @references \itemize{ \item{Chao et al. (2015) Rarefaction and extrapolation
 #'   of phylogenetic diversity. \emph{Methods in Ecology & Evolution} 6:
@@ -123,6 +124,7 @@ phylodiv.estimate <- function (x, phy, subsampling = "individual") {
   ### step 6: compile output
   
   PD_est <- PD_obs + g0
-  return (PD_est)
-  
+  output <- list(PD_obs,PD_est)
+  names(output) <- c("observed","estimate")
+  return (output)
 }

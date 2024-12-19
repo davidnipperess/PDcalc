@@ -3,6 +3,7 @@
 export(bifurcatr)
 export(phylocurve)
 export(phylodiv)
+export(phylodiv.estimate)
 export(phylodiv.expect.secured)
 export(phylodiv.expected)
 export(phyloendemism)

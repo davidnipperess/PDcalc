@@ -2,5 +2,18 @@
 % Please edit documentation in R/PDcalc-package.R
 \docType{package}
 \name{PDcalc}
+\alias{PDcalc-package}
 \alias{PDcalc}
 \title{PDcalc: a package for the PD calculus}
+\description{
+PDcalc is a package for calculating various diversity measures based on Phylogenetic Diversity. This measurement framework is often referred to as the "PD calculus".
+}
+\author{
+\strong{Maintainer}: David Nipperess \email{david.nipperess@mq.edu.au}
+
+Authors:
+\itemize{
+  \item Peter Wilson \email{peter.wilson@mq.edu.au}
+}
+
+}

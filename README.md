@@ -6,7 +6,8 @@ The package includes functions for:
 
   * Classical PD
   * PD rarefaction curves
-  * PD resemblance measures
+  * Estimation of undetected PD
+  * PD resemblance measures (similarity and dissimilarity)
   * Phylogenetic endemism
   * Algorithms for conservation decision making
   * Polytomy resolving algorithm (for ultrametric trees)

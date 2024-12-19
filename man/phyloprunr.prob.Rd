@@ -36,7 +36,7 @@ conserved). Each name must match to a name in \code{managed}.}
 
 \item{survival}{is a \code{numeric} vector of survival probabilities, given
 no management for conservation, corresponding to each species in
-\code{managed}.}
+\code{species}.}
 
 \item{feasibility}{is an optional \code{numeric} vector of probabilities of
 successfully managing each species in \code{managed}. By default,

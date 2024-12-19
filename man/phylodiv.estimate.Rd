@@ -24,8 +24,9 @@ table, so it is not necessary to do this beforehand.}
 \code{'individual'} (default) or \code{'site'}.}
 }
 \value{
-a \code{numeric} vector giving estimated PD values for every
-  sample/site or a single value for pooled samples/sites.
+a \code{list}, giving observed and estimated PD values. Each element
+  of the list is a \code{numeric}, giving PD values for every sample/site or a
+  single value for pooled samples/sites.
 }
 \description{
 Estimates total phylogenetic diversity (both detected and undetected) for

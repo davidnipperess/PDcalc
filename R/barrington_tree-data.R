@@ -1,0 +1,23 @@
+#' Phylogenetic tree of birds of Barrington Tops National Park
+#'
+#' A phylogenetic tree of bird species observed in Barrington Tops National Park
+#' during a survey in November 2012. The tree has 41 tips corresponding to the
+#' bird species observed. The tree is a Maximum Clade Credibility tree extracted
+#' from the Bayesian supertree published by Jetz et al. (2012).
+#'
+#' @docType data
+#'
+#' @usage data(barrington_tree)
+#'
+#' @format A \code{phylo} object, as used by the \code{ape} package. Branch
+#'   lengths are scaled in millions of years since divergence events.
+#'
+#' @keywords datasets
+#'
+#' @references \itemize{ \item{Chao A, Chiu CH, Hsieh TC, Davis T, Nipperess DA
+#'   & Faith DP (2015) Rarefaction and extrapolation of phylogenetic diversity.
+#'   \emph{Methods in Ecology & Evolution} 6: 380-388.} \item{Jetz W, Thomas GH,
+#'   Joy JB, Hartmann K & Mooers AO (2012) The global diversity of birds in
+#'   space and time. \emph{Nature} 491: 444-448}}
+#' 
+"barrington_tree"
